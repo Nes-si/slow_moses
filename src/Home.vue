@@ -73,5 +73,5 @@
     outline: none !important
 </style>
 
-<style lang="sss" scoped rel="stylesheet/sass">
+<style lang="scss" scoped rel="stylesheet/scss">
 </style>
