@@ -1,5 +1,12 @@
 <template lang="pug">
   #app Hello!
+    ul
+      li
+        a(href="/") Home
+      li
+        a(href="/contacts") Contacts
+      li
+        a(href="/tour") Tour
 </template>
 
 <script>
