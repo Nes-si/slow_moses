@@ -2,7 +2,7 @@
   .tour
     canvas.canvas#canvas
     .bg
-    .cross 
+    router-link.cross(to="/") 
     .title(data-text="TOUR")
       | TOUR
     .tour-inner

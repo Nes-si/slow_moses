@@ -2,7 +2,7 @@
   .contacts
     canvas.canvas#canvas
     .bg
-    .cross 
+    router-link.cross(to="/") 
 
     .contacts-inner
       .contacts-item
