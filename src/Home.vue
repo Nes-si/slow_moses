@@ -14,46 +14,60 @@
 </template>
 
 <script>
-export default {
-  name: "Home",
-
-  mounted: function() {
-    var canvas = document.getElementById('canvas'),
-    ctx = canvas.getContext('2d');
-    function resize() {
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
-    }
-    resize();
-    window.onresize = resize;
-
-    function noise(ctx) {
-        var w = ctx.canvas.width,
-            h = ctx.canvas.height,
-            idata = ctx.createImageData(w, h),
-            buffer32 = new Uint32Array(idata.data.buffer),
-            len = buffer32.length,
-            i = 0;
-
-        for(; i < len;)
-            buffer32[i++] = ((255 * Math.random())|0) << 24;
-
-        ctx.putImageData(idata, 0, 0);
-    }
-
-    var toggle = true;
-
-    // added toggle to get 30 FPS instead of 60 FPS
-    (function loop() {
-        toggle = !toggle;
-        if (toggle) {
-            requestAnimationFrame(loop);
-            return;
-        }
-        noise(ctx);
-        requestAnimationFrame(loop);
-    })();
-
+  import debounce from 'throttle-debounce/debounce';
+  
+  
+  const THROTTLING = 3;
+  
+  export default {
+    name: "Home",
+    
+    data: function () {
+      return {
+        canvas: null,
+        context: null,
+        toggle: 0,
+        
+        imgData: null
+      }
+    },
+  
+    mounted: function() {
+      this.canvas = document.getElementById('canvas');
+      this.context = this.canvas.getContext('2d');
+  
+      this.onResize();
+      window.addEventListener('resize', this.onResize);
+  
+      this.loop();
+    },
+    
+    methods: {
+      onResize: function () {
+        debounce(300, true, () => {
+          this.canvas.width = window.innerWidth;
+          this.canvas.height = window.innerHeight;
+  
+          this.imgData = this.context.createImageData(this.canvas.width, this.canvas.height);
+        })();
+      },
+  
+      noise: function () {
+        let buffer32 = new Uint32Array(this.imgData.data.buffer);
+        for (let i = 0; i < buffer32.length; i++)
+          buffer32[i] = (255 * Math.random()) << 24;
+        
+        this.context.putImageData(this.imgData, 0, 0);
+      },
+      
+      loop: function () {
+        if (!this.toggle)
+          this.noise();
+        this.toggle++;
+        if (this.toggle >= THROTTLING)
+          this.toggle = 0;
+        requestAnimationFrame(this.loop);
+      }
     }
   }
 </script>
