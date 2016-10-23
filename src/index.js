@@ -1,25 +1,32 @@
 import 'babel-polyfill';
 import Vue from 'vue';
+import VueRouter from 'vue-router';
 
-import Home from './Home';
+import App from './App';
 import Contacts from 'components/Contacts';
 import Tour from 'components/Tour';
 
-const routes = {
-  '/': Home,
-  '/contacts': Contacts,
-  '/tour': Tour
-};
+
+
+Vue.use(VueRouter);
+
+const router = new VueRouter({
+  mode: 'history',
+  routes: [
+    {
+      path: '/contacts',
+      component: Contacts
+    },
+    {
+      path: '/tour',
+      component: Tour
+    }
+  ]
+});
 
 new Vue({
   el: '#app',
-  data: {
-    currentRoute: window.location.pathname
-  },
-  computed: {
-    ViewComponent () {
-      return routes[this.currentRoute] || Home;
-    }
-  },
-  render (h) { return h(this.ViewComponent); }
+  router,
+  // replace the content of <div id="app"></div> with App
+  render: h => h(App)
 });

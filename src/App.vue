@@ -4,13 +4,15 @@
     .bg
     ul
       li
-        a(href="/") Home
+        router-link(to="/") Home
       li
-        a(href="/contacts") Contacts
+        router-link(to="/contacts") Contacts
       li
-        a(href="/tour") Tour
+        router-link(to="/tour") Tour
 
     .logo
+  
+    router-view
 </template>
 
 <script>
@@ -20,7 +22,7 @@
   const THROTTLING = 3;
   
   export default {
-    name: "Home",
+    name: "App",
     
     data: function () {
       return {
