@@ -1,7 +1,5 @@
 <template lang="pug">
   .tour
-    canvas.canvas#canvas
-    .bg
     router-link.cross(to="/") 
     .title(data-text="TOUR")
       | TOUR
@@ -121,47 +119,8 @@
 
 <script>
   export default {
-    name: "TourComponent",
-
-    mounted: function() {
-      var canvas = document.getElementById('canvas'),
-      ctx = canvas.getContext('2d');
-      function resize() {
-          canvas.width = window.innerWidth;
-          canvas.height = window.innerHeight;
-      }
-      resize();
-      window.onresize = resize;
-
-      function noise(ctx) {
-          var w = ctx.canvas.width,
-              h = ctx.canvas.height,
-              idata = ctx.createImageData(w, h),
-              buffer32 = new Uint32Array(idata.data.buffer),
-              len = buffer32.length,
-              i = 0;
-
-          for(; i < len;)
-              buffer32[i++] = ((255 * Math.random())|0) << 24;
-
-          ctx.putImageData(idata, 0, 0);
-      }
-
-      var toggle = true;
-
-      // added toggle to get 30 FPS instead of 60 FPS
-      (function loop() {
-          toggle = !toggle;
-          if (toggle) {
-              requestAnimationFrame(loop);
-              return;
-          }
-          noise(ctx);
-          requestAnimationFrame(loop);
-      })();
-
-      }
-    }
+    name: "TourComponent"
+  }
 </script>
 
 <style lang="scss" scoped rel="stylesheet/scss">
@@ -184,26 +143,6 @@
       letter-spacing: 0px;
       z-index: 1;
       padding: 0px 0 40px;
-    }
-
-    .canvas {
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 100%;
-      z-index: -1;
-    }
-
-    .bg {
-      background: #131115;
-      opacity: 0.9;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
     }
 
     .title {
