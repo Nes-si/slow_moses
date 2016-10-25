@@ -125,14 +125,17 @@
 
 <style lang="scss" scoped rel="stylesheet/scss">
   .tour {
+    position: absolute;
+    z-index: 100;
+
     display: flex;
     flex-flow: column nowrap;
     justify-content: center;
     align-items: center;
 
     height: 100%;
+    width: 100%;
     overflow: hidden;
-    position: relative;
 
     padding: 50px 0;
 
