@@ -1,5 +1,7 @@
 <template lang="pug">
   .home
+    .bg
+  
     .contact
       router-link(to="/contacts") 
 
@@ -32,6 +34,17 @@
 </script>
 <style lang="scss" scoped rel="stylesheet/scss">
   .home {
+    .bg {
+      background: #37254C;
+      opacity: 0.9;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
+    
     .content {
       display: flex;
       flex-flow: row nowrap;

@@ -1,5 +1,6 @@
 <template lang="pug">
   .tour
+    .bg
     router-link.cross(to="/") 
     .title(data-text="TOUR")
       | TOUR
@@ -138,6 +139,17 @@
     overflow: hidden;
 
     padding: 50px 0;
+  
+    .bg {
+      background: #28242A;
+      opacity: 0.9;
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 100%;
+      height: 100%;
+      z-index: 0;
+    }
 
     .cross {
       font-family: 'FontAwesome';

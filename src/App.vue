@@ -1,8 +1,6 @@
 <template lang="pug">
   #app.app
     canvas.canvas#canvas
-    .bg
-
     router-view.router-view
 </template>
 
@@ -77,17 +75,6 @@
       width: 100%;
       height: 100%;
       z-index: -1;
-    }
-
-    .bg {
-      background: #37254C;
-      opacity: 0.9;
-      position: absolute;
-      left: 0;
-      top: 0;
-      width: 100%;
-      height: 100%;
-      z-index: 0;
     }
   }
 </style>
