@@ -56,9 +56,8 @@
   
       noise: function () {
         let buffer32 = new Uint32Array(this.imgData.data.buffer);
-        for (let i = 0; i < buffer32.length; i++)
-          buffer32[i] = (255 * Math.random()) << 24;
-        
+        for (let i = 0; i < buffer32.length;)
+          buffer32[i++] = (255 * Math.random()) << 24;
         this.context.putImageData(this.imgData, 0, 0);
       },
       
@@ -104,7 +103,7 @@
   }
 
   .bg {
-    background: #131115;
+    background: #37254C;
     opacity: 0.9;
     position: absolute;
     left: 0;
