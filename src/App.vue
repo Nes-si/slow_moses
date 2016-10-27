@@ -67,6 +67,17 @@
 </style>
 
 <style lang="scss" rel="stylesheet/scss">
+  @import url('https://fonts.googleapis.com/css?family=Exo+2:300,400,500');
+  @font-face {
+  	font-family: 'Verveine Regular';
+  	src: url('fonts/VerveineW01-Regular.eot');
+  	src: url('fonts/VerveineW01-Regular.eot?#iefix') format('embedded-opentype'),
+  		url('fonts/VerveineW01-Regular.woff') format('woff'),
+  		url('fonts/VerveineW01-Regular.ttf') format('truetype');
+  	font-weight: normal;
+  	font-style: normal;
+  }
+
   .app {
     .canvas {
       position: absolute;
@@ -98,7 +109,7 @@
 
   body
     -webkit-font-smoothing: antialiased
-    font-family: 'Open Sans Hebrew Condensed', sans-serif
+    font-family: 'Exo 2', sans-serif
     height: 100%
 
   textarea

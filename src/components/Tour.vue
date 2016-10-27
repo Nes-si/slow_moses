@@ -169,6 +169,8 @@
       padding-bottom: 30px;
 
       position: relative;
+
+      font-family: 'Verveine Regular', sans-serif;
     }
 
     @keyframes noise-anim{
@@ -229,7 +231,7 @@
     }
 
     .table {
-      width: 60%;
+      width: 70%;
       text-align: left;
 
       &-item {
@@ -259,7 +261,7 @@
         color: rgba(250,204,130,0.70);
         letter-spacing: 0px;
         flex: 1;
-        text-align: center;
+        text-align: left;
       }
 
       &-tickets,

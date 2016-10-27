@@ -1,7 +1,7 @@
 <template lang="pug">
   .home
     .bg
-  
+    .home-bg
     .contact
       router-link(to="/contacts") 
 
@@ -44,7 +44,18 @@
       height: 100%;
       z-index: 0;
     }
-    
+
+    &-bg {
+      background: url('../images/bg.png') no-repeat center center / contain;
+      width: 1600px;
+      height: 100%;
+
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate3d(-50%, 0, 0);
+    }
+
     .content {
       display: flex;
       flex-flow: row nowrap;
@@ -102,6 +113,21 @@
     .soundcloud,
     .facebook {
       margin-top: 28px;
+    }
+
+    .itunes,
+    .soundcloud,
+    .facebook,
+    .instagram,
+    .spotify,
+    .tour,
+    .contact {
+      transition: filter 0.1s ease;
+      will-change: filter;
+
+      &:hover  {
+        filter: drop-shadow(0px 0px 7px #FACD82);
+      }
     }
 
     .logo {

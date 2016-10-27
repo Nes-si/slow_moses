@@ -84,6 +84,8 @@
 
       position: relative;
       cursor: pointer;
+
+      font-family: 'Verveine Regular', sans-serif;
     }
 
     @keyframes noise-anim{
