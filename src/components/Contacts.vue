@@ -32,16 +32,13 @@
           a.itunes(href="#") 
           a.spotify(href="#") 
           a.soundcloud(href="#") 
-
-
 </template>
-
 <script>
   export default {
     name: "ContactsComponent"
   }
 </script>
-<style lang="scss" scoped rel="stylesheet/scss">
+<style lang="scss" rel="stylesheet/scss" scoped>
   .contacts {
     position: absolute;
     z-index: 100;
@@ -55,10 +52,11 @@
     width: 100%;
     overflow: hidden;
 
-    padding: 50px 0;
+    padding: 50px 0 0;
 
     .bg {
-      background: #37254C;
+      // background: #37254C;
+      background: #121213;
       opacity: 0.9;
       position: absolute;
       left: 0;
@@ -74,6 +72,7 @@
       color: rgba(250,204,130,0.70);
       letter-spacing: 0px;
       z-index: 1;
+      padding-bottom: 20px;
     }
 
     .title {
@@ -88,7 +87,7 @@
       font-family: 'Verveine Regular', sans-serif;
     }
 
-    @keyframes noise-anim{
+    @keyframes noise-anim {
       $steps:20;
       @for $i from 0 through $steps{
         #{percentage($i*(1/$steps))}{
@@ -97,7 +96,7 @@
       }
     }
 
-    @keyframes noise-anim-2{
+    @keyframes noise-anim-2 {
       $steps:20;
       @for $i from 0 through $steps{
         #{percentage($i*(1/$steps))}{
@@ -116,7 +115,7 @@
       background:black;
       overflow:hidden;
       clip:rect(0,900px,0,0);
-      animation:noise-anim 2s infinite linear alternate-reverse;
+      animation: noise-anim 2s infinite linear alternate-reverse;
     }
 
     .title:before {
@@ -129,7 +128,7 @@
       background:black;
       overflow:hidden;
       clip:rect(0,900px,0,0);
-      animation:noise-anim-2 3s infinite linear alternate-reverse;
+      animation: noise-anim-2 3s infinite linear alternate-reverse;
     }
 
 
@@ -152,6 +151,10 @@
       flex-flow: column nowrap;
       justify-content: center;
       align-items: center;
+
+      &:last-child {
+        margin-bottom: 50px;
+      }
     }
 
     .label {

@@ -9,113 +9,143 @@
         .table-item
           .table-date
             | Aug 28
-          .table-name
-            | MusicFestNW
-          .table-location
-            | Portland, Oregon
+          .table-names
+            .table-name
+              | MusicFestNW
+            .table-location
+              | Portland, Oregon
           .table-tickets
-            | TICKETS
+            a(href="#")
+              | TICKETS
           .table-info
-            | Info
+            a(href="#")
+              | Info
         .table-item
           .table-date
             | Aug 30
-          .table-name
-            | Lagunitas
-          .table-location
-            | Petaluma, California
+          .table-names
+            .table-name
+              | Lagunitas
+            .table-location
+              | Petaluma, California
           .table-tickets
-            | TICKETS
+            a(href="#")
+              | TICKETS
           .table-info
-            | Info
+            a(href="#")
+              | Info
         .table-item
           .table-date
             | Sept 1
-          .table-name
-            | MusicFestNW
-          .table-location
-            | Santa Monica, California
+          .table-names
+            .table-name
+              | MusicFestNW
+            .table-location
+              | Santa Monica, California
           .table-tickets
-            | TICKETS
+            a(href="#")
+              | TICKETS
           .table-info
-            | Info
+            a(href="#")
+              | Info
         .table-item
           .table-date
             | Aug 28
-          .table-name
-            | MusicFestNW
-          .table-location
-            | Portland, Oregon
+          .table-names
+            .table-name
+              | MusicFestNW
+            .table-location
+              | Portland, Oregon
           .table-tickets
-            | TICKETS
+            a(href="#")
+              | TICKETS
           .table-info
-            | Info
+            a(href="#")
+              | Info
         .table-item
           .table-date
             | Aug 30
-          .table-name
-            | Lagunitas
-          .table-location
-            | Petaluma, California
+          .table-names
+            .table-name
+              | Lagunitas
+            .table-location
+              | Petaluma, California
           .table-tickets
-            | TICKETS
+            a(href="#")
+              | TICKETS
           .table-info
-            | Info
+            a(href="#")
+              | Info
         .table-item
           .table-date
             | Sept 1
-          .table-name
-            | MusicFestNW
-          .table-location
-            | Santa Monica, California
+          .table-names
+            .table-name
+              | MusicFestNW
+            .table-location
+              | Santa Monica, California
           .table-tickets
-            | TICKETS
+            a(href="#")
+              | TICKETS
           .table-info
-            | Info
+            a(href="#")
+              | Info
         .table-item
           .table-date
             | Aug 28
-          .table-name
-            | MusicFestNW
-          .table-location
-            | Portland, Oregon
+          .table-names
+            .table-name
+              | MusicFestNW
+            .table-location
+              | Portland, Oregon
           .table-tickets
-            | TICKETS
+            a(href="#")
+              | TICKETS
           .table-info
-            | Info
+            a(href="#")
+              | Info
         .table-item
           .table-date
             | Aug 30
-          .table-name
-            | Lagunitas
-          .table-location
-            | Petaluma, California
+          .table-names
+            .table-name
+              | Lagunitas
+            .table-location
+              | Petaluma, California
           .table-tickets
-            | TICKETS
+            a(href="#")
+              | TICKETS
           .table-info
-            | Info
+            a(href="#")
+              | Info
         .table-item
           .table-date
             | Sept 1
-          .table-name
-            | MusicFestNW
-          .table-location
-            | Santa Monica, California
+          .table-names
+            .table-name
+              | MusicFestNW
+            .table-location
+              | Santa Monica, California
           .table-tickets
-            | TICKETS
+            a(href="#")
+              | TICKETS
           .table-info
-            | Info
+            a(href="#")
+              | Info
         .table-item
           .table-date
             | Aug 28
-          .table-name
-            | MusicFestNW
-          .table-location
-            | Portland, Oregon
+          .table-names
+            .table-name
+              | MusicFestNW
+            .table-location
+              | Portland, Oregon
           .table-tickets
-            | TICKETS
+            a(href="#")
+              | TICKETS
           .table-info
-            | Info
+            a(href="#")
+              | Info
 </template>
 
 <script>
@@ -141,7 +171,8 @@
     padding: 50px 0 0;
 
     .bg {
-      background: #37254C;
+      // background: #37254C;
+      background: #121213;
       opacity: 0.9;
       position: absolute;
       left: 0;
@@ -173,7 +204,7 @@
       font-family: 'Verveine Regular', sans-serif;
     }
 
-    @keyframes noise-anim{
+    @keyframes noise-anim {
       $steps:20;
       @for $i from 0 through $steps{
         #{percentage($i*(1/$steps))}{
@@ -182,7 +213,7 @@
       }
     }
 
-    @keyframes noise-anim-2{
+    @keyframes noise-anim-2 {
       $steps:20;
       @for $i from 0 through $steps{
         #{percentage($i*(1/$steps))}{
@@ -201,7 +232,7 @@
       background:black;
       overflow:hidden;
       clip:rect(0,900px,0,0);
-      animation:noise-anim 2s infinite linear alternate-reverse;
+      animation: noise-anim 2s infinite linear alternate-reverse;
     }
 
     .title:before {
@@ -214,7 +245,7 @@
       background:black;
       overflow:hidden;
       clip:rect(0,900px,0,0);
-      animation:noise-anim-2 3s infinite linear alternate-reverse;
+      animation: noise-anim-2 3s infinite linear alternate-reverse;
     }
 
     &-inner {
@@ -250,7 +281,15 @@
         font-size: 16px;
         color: rgba(250,204,130,0.70);
         letter-spacing: 0px;
-        flex: 1;
+        flex: 0 0 12%;
+      }
+
+      &-names {
+        flex: 0 0 74%;
+        display: flex;
+        flex-flow: row nowrap;
+        justify-content: space-between;
+        align-items: center
       }
 
       &-name {
@@ -271,11 +310,51 @@
       &-tickets,
       &-info {
         font-size: 14px;
-        color: #FACD82;
         letter-spacing: 0px;
-        flex: 1;
+        flex: 0 0 7%;
         text-align: right;
         text-transform: uppercase;
+
+        transition: text-shadow 0.2s ease;
+        will-change: text-shadow;
+
+        a {
+          color: #FACD82;
+        }
+
+        &:hover {
+          text-shadow: 0px 0px 10px #FACD82;
+        }
+      }
+    }
+  }
+
+
+  @media (max-width: 768px) {
+    .tour {
+      .table {
+        padding: 0 15px;
+        width: 100%;
+
+        &-item {
+          padding: 15px 15px 23px 10px;
+        }
+
+        &-date {
+          flex: 0 0 15%;
+        }
+
+        &-names {
+          flex: 0 0 57%;
+        }
+
+        &-tickets {
+          flex: 0 0 18%;
+        }
+
+        &-info {
+          flex: 0 0 10%;
+        }
       }
     }
   }

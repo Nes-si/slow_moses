@@ -114,7 +114,8 @@
 
   body
     -webkit-font-smoothing: antialiased
-    font-family: 'Exo 2', sans-serif
+    /*font-family: 'Exo 2', sans-serif*/
+    font-family: 'Verveine Regular', sans-serif
     height: 100%
 
   textarea

@@ -42,7 +42,8 @@
     width: 100%;
 
     .bg {
-      background: #37254C;
+      // background: #37254C;
+      background: #302142;
       opacity: 0.9;
       position: absolute;
       left: 0;
@@ -118,7 +119,7 @@
     .spotify,
     .tour,
     .contact {
-      transition: filter 0.1s ease;
+      transition: filter 0.3s ease;
       will-change: filter;
 
       &:hover  {
