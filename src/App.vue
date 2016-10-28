@@ -79,6 +79,11 @@
   }
 
   .app {
+    height: 100%;
+    width: 100%;
+
+    // min-height: 650px;
+
     .canvas {
       position: absolute;
       top: 0;

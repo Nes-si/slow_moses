@@ -138,10 +138,10 @@
     width: 100%;
     overflow: hidden;
 
-    padding: 50px 0;
-  
+    padding: 50px 0 0;
+
     .bg {
-      background: #28242A;
+      background: #37254C;
       opacity: 0.9;
       position: absolute;
       left: 0;
@@ -240,6 +240,10 @@
         padding: 15px 0 23px 0;
         display: flex;
         flex-flow: row nowrap;
+
+        &:last-child {
+          margin-bottom: 50px;
+        }
       }
 
       &-date {

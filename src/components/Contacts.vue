@@ -1,7 +1,7 @@
 <template lang="pug">
   .contacts
     .bg
-  
+
     router-link.cross(to="/") 
 
     .contacts-inner
@@ -56,9 +56,9 @@
     overflow: hidden;
 
     padding: 50px 0;
-  
+
     .bg {
-      background: #28242A;
+      background: #37254C;
       opacity: 0.9;
       position: absolute;
       left: 0;
@@ -137,7 +137,7 @@
     &-inner {
       position: relative;
       z-index: 25;
-      width: 60%;
+      width: 100%;
 
       text-align: center;
       overflow-y: scroll;

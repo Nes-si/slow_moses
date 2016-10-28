@@ -2,6 +2,8 @@
   .home
     .bg
     .home-bg
+    .noise
+      img(src="~images/noise.gif")
     .contact
       router-link(to="/contacts") 
 
@@ -34,6 +36,11 @@
 </script>
 <style lang="scss" scoped rel="stylesheet/scss">
   .home {
+    position: relative;
+    overflow: hidden;
+    height: 100%;
+    width: 100%;
+
     .bg {
       background: #37254C;
       opacity: 0.9;
@@ -43,17 +50,6 @@
       width: 100%;
       height: 100%;
       z-index: 0;
-    }
-
-    &-bg {
-      background: url('../images/bg.png') no-repeat center center / contain;
-      width: 1600px;
-      height: 100%;
-
-      position: absolute;
-      top: 0;
-      left: 50%;
-      transform: translate3d(-50%, 0, 0);
     }
 
     .content {
@@ -131,14 +127,99 @@
     }
 
     .logo {
+      margin-top: 6vh;
+
       background: url('../images/logo.svg') no-repeat center center / contain;
-      width: 436px;
-      height: 329px;
+      width: 27.25vw;
+      height: 36.555555vh;
       position: relative;
       z-index: 99;
-
       filter: drop-shadow(0px 0px 5px #FACD82) drop-shadow(0px 0px 7px #FACD82) drop-shadow(0px 0px 12px #FACD82);
     }
 
+    &-bg {
+      background: url('../images/bg.png') no-repeat center center / contain;
+      width: 1600px;
+      height: 100%;
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translate3d(-50%, 0, 0);
+
+      z-index: 10;
+    }
+
+    .noise {
+      position: absolute;
+      top: 62.5vh;
+      left: 50%;
+      transform: translate(-50%,-50%);
+      width: 33vh;
+      height: 25vh;
+
+      z-index: 5;
+
+      img {
+        width: 100%;
+        height: 100%;
+      }
+    }
+  }
+
+  @media (min-height: 900px) {
+    .home {
+      .logo {
+        width: 56.77vw;
+        height: 33.43vh;
+      }
+    }
+  }
+
+  @media (max-width: 768px) {
+    .home {
+      .logo {
+        width: 56.77vw;
+        height: 33.43vh;
+      }
+
+      .listen {
+        display: none;
+      }
+
+      .socials {
+        display: none;
+      }
+    }
+  }
+
+  @media (max-width: 425px) {
+    .home {
+
+      .logo {
+        // padding: 0 50px;
+        // width: 100%;
+        // max-width: 268px;
+        // height: 203px;
+
+        width: 71.46vw;
+        height: 32.37vh;
+
+        margin-left: 10%;
+        margin-right: 10%;
+      }
+
+      .contact,
+      .tour {
+        top: initial;
+        left: 24px;
+        bottom: 24px;
+        filter: drop-shadow(0px 0px 7px #FACD82);
+      }
+
+      .tour {
+        left: initial;
+        right: 24px;
+      }
+    }
   }
 </style>
