@@ -8,21 +8,21 @@
       router-link(to="/contacts") 
 
     .listen
-      a.spotify(href="#")
+      a.spotify(href="https://open.spotify.com/artist/7LyEncFWbb2nOsbVcQqFQm")
         | 
-      a.soundcloud(href="#")
+      a.soundcloud(href="https://soundcloud.com/wooden-indian")
         | 
-      a.itunes(href="#")
+      a.itunes(href="https://itunes.apple.com/us/artist/slow-moses")
         | 
 
     .tour
       router-link(to="/tour") 
 
     .socials
-      a.instagram(href="#")
+      a.instagram(href="https://www.instagram.com/slowmoses/")
         | 
 
-      a.facebook(href="#")
+      a.facebook(href="https://www.facebook.com/SlowMoses/")
         | 
 
     .content
