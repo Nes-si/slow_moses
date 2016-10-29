@@ -64,7 +64,6 @@
         this.pageLoaded = true;
       },
       onBgLoaded: function () {
-        console.log('bg loaded!');
         this.bgLoaded = true;
       }
     }
