@@ -101,7 +101,7 @@
     }
     
     .bg {
-      background: url('images/main.gif') repeat 0 0;
+      background: url('images/main-200.gif') repeat 0 0;
     }
   }
 </style>
