@@ -5,7 +5,7 @@
     router-link.cross(to="/") 
 
     .contacts-inner
-      .contacts-item
+      .contacts-item.contacts-main
         .title(data-text="CONTACT")
           | CONTACT
 
@@ -16,7 +16,7 @@
           .mail 
           | SLOWMOSES@GMAIL.COM
 
-      .contacts-item
+      .contacts-item.contacts-social
         .title(data-text="CONNECT")
           | CONNECT
 
@@ -24,7 +24,7 @@
           a.ig(href="https://www.instagram.com/slowmoses/") 
           a.fb(href="https://www.facebook.com/SlowMoses/") 
 
-      .contacts-item
+      .contacts-item.contacts-listen
         .title(data-text="LISTEN")
           | LISTEN
 
@@ -87,50 +87,96 @@
       font-family: 'Verveine Regular', sans-serif;
     }
 
-    @keyframes noise-anim {
-      $steps:20;
-      @for $i from 0 through $steps{
-        #{percentage($i*(1/$steps))}{
-          clip:rect(random(100)+px,9999px,random(100)+px,0);
+    @keyframes noise-anim-1 {
+      $steps: 20;
+      @for $i from 0 through $steps {
+        #{percentage($i * (1 / $steps))} {
+          clip: rect(random(100) + px, 9999px, random(100) + px, 0);
         }
       }
     }
-
+    @keyframes noise-anim-1_2 {
+      $steps: 20;
+      @for $i from 0 through $steps {
+        #{percentage($i * (1 / $steps))} {
+          clip: rect(random(100) + px, 9999px, random(100) + px, 0);
+        }
+      }
+    }
     @keyframes noise-anim-2 {
-      $steps:20;
-      @for $i from 0 through $steps{
-        #{percentage($i*(1/$steps))}{
-          clip:rect(random(100)+px,9999px,random(100)+px,0);
+      $steps: 20;
+      @for $i from 0 through $steps {
+        #{percentage($i * (1 / $steps))} {
+          clip: rect(random(100) + px, 9999px, random(100) + px, 0);
+        }
+      }
+    }
+    @keyframes noise-anim-2_2 {
+      $steps: 20;
+      @for $i from 0 through $steps {
+        #{percentage($i * (1 / $steps))} {
+          clip: rect(random(100) + px, 9999px, random(100) + px, 0);
+        }
+      }
+    }
+    @keyframes noise-anim-3 {
+      $steps: 20;
+      @for $i from 0 through $steps {
+        #{percentage($i * (1 / $steps))} {
+          clip: rect(random(100) + px, 9999px, random(100) + px, 0);
+        }
+      }
+    }
+    @keyframes noise-anim-3_2 {
+      $steps: 20;
+      @for $i from 0 through $steps {
+        #{percentage($i * (1 / $steps))} {
+          clip: rect(random(100) + px, 9999px, random(100) + px, 0);
         }
       }
     }
 
     .title:after {
-      content:attr(data-text);
-      position:absolute;
-      left:2px;
-      text-shadow:-1px 0 red;
-      top:0;
-      color:white;
-      background:url('../images/noise-bg.png') no-repeat center center / auto;
-      overflow:hidden;
-      clip:rect(0,900px,0,0);
-      animation: noise-anim 2s infinite linear alternate-reverse;
+      content: attr(data-text);
+      position: absolute;
+      left: 2px;
+      text-shadow: -1px 0 red;
+      top: 0;
+      color: white;
+      background: url('../images/noise-bg.png') no-repeat center center / auto;
+      overflow: hidden;
+      clip: rect(0, 900px, 0, 0);
+      animation: noise-anim-1 2s infinite linear alternate-reverse;
     }
 
     .title:before {
-      content:attr(data-text);
-      position:absolute;
-      left:-2px;
-      text-shadow:1px 0 blue;
-      top:0;
-      color:white;
-      background:url('../images/noise-bg.png') no-repeat center center / auto;
-      overflow:hidden;
-      clip:rect(0,900px,0,0);
-      animation: noise-anim-2 3s infinite linear alternate-reverse;
+      content: attr(data-text);
+      position: absolute;
+      left: -2px;
+      text-shadow: 1px 0 blue;
+      top: 0;
+      color: white;
+      background: url('../images/noise-bg.png') no-repeat center center / auto;
+      overflow: hidden;
+      clip: rect(0, 900px, 0, 0);
+      animation: noise-anim-1_2 3s infinite linear alternate-reverse;
     }
-
+    
+    .contacts-social .title:after {
+      animation: noise-anim-2 2s infinite linear alternate-reverse;
+    }
+  
+    .contacts-social .title:before {
+      animation: noise-anim-2_2 2s infinite linear alternate-reverse;
+    }
+  
+    .contacts-listen .title:after {
+      animation: noise-anim-3 2s infinite linear alternate-reverse;
+    }
+  
+    .contacts-listen .title:before {
+      animation: noise-anim-3_2 2s infinite linear alternate-reverse;
+    }
 
 
     &-inner {
