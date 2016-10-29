@@ -56,7 +56,11 @@
     },
     
     mounted: function () {
-      document.addEventListener('DOMContentLoaded', this.onLoaded);
+      let img = document.querySelector('.home .hidden img');
+      if (img.complete)
+        this.bgLoaded = this.pageLoaded = true;
+      else
+        document.addEventListener('DOMContentLoaded', this.onLoaded);
     },
     
     methods: {
