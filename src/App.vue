@@ -1,6 +1,7 @@
 <template lang="pug">
   #app.app
-    canvas.canvas#canvas
+    //canvas.canvas#canvas
+    .bg
     router-view.router-view
 </template>
 
@@ -88,13 +89,17 @@
 
     // min-height: 650px;
 
-    .canvas {
+    .canvas, .bg {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       z-index: -1;
+    }
+    
+    .bg {
+      background: url('images/main.gif') repeat 0 0;
     }
   }
 </style>
