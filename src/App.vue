@@ -77,6 +77,10 @@
   	font-weight: normal;
   	font-style: normal;
   }
+  
+  body {
+    overflow-y: hidden;
+  }
 
   .app {
     height: 100%;

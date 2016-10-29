@@ -1,9 +1,14 @@
 <template lang="pug">
   .home
+    .hidden(v-show="false")
+      img(src="~images/bg.png" v-on:load="onBgLoaded")
+  
     .bg
-    .home-bg
-    .noise
-      img(src="~images/noise.gif")
+    transition
+      .home-bg(v-show="isLoaded")
+    transition
+      .noise(v-show="isLoaded")
+        img(src="~images/noise.gif")
     .contact
       router-link(to="/contacts") 
 
@@ -24,14 +29,45 @@
 
       a.facebook(href="https://www.facebook.com/SlowMoses/")
         | 
-
+  
+    
     .content
-      .logo
+      transition
+        .logo(v-show="isLoaded")
+  
+    
 </template>
 
 <script>
   export default {
-    name: "HomeComponent"
+    name: "HomeComponent",
+    
+    data: function () {
+      return {
+        pageLoaded: false,
+        bgLoaded: false
+      }
+    },
+    
+    computed: {
+      isLoaded: function () {
+        return this.pageLoaded && this.bgLoaded;
+      }
+    },
+    
+    mounted: function () {
+      document.addEventListener('DOMContentLoaded', this.onLoaded);
+    },
+    
+    methods: {
+      onLoaded: function () {
+        this.pageLoaded = true;
+      },
+      onBgLoaded: function () {
+        console.log('bg loaded!');
+        this.bgLoaded = true;
+      }
+    }
   }
 </script>
 <style lang="scss" scoped rel="stylesheet/scss">
@@ -165,6 +201,13 @@
         height: 100%;
       }
     }
+  }
+
+  .v-enter-active, .v-leave-active {
+    transition: opacity 1s
+  }
+  .v-enter, .v-leave-active {
+    opacity: .01
   }
 
   @media (min-height: 900px) {
