@@ -4,11 +4,13 @@
       img(src="~images/bg.png" v-on:load="onBgLoaded")
   
     .bg
+  
     transition
-      .home-bg(v-show="isLoaded")
-    transition
-      .noise(v-show="isLoaded")
-        img(src="~images/noise.gif")
+      .bg-home(v-show="isLoaded")
+        .bg-pic
+        .noise
+          .img
+    
     .contact
       router-link(to="/contacts") 
 
@@ -177,33 +179,38 @@
       filter: drop-shadow(0px 0px 5px #FACD82) drop-shadow(0px 0px 7px #FACD82) drop-shadow(0px 0px 12px #FACD82);
     }
 
-    &-bg {
-      background: url('../images/bg.png') no-repeat center center / contain;
+    .bg-home {
       width: 1600px;
       height: 100%;
       position: absolute;
-      top: 0;
       left: 50%;
       transform: translate3d(-50%, 0, 0);
-
-      z-index: 10;
-    }
-
-    .noise {
-      position: absolute;
-      top: 62.5vh;
-      left: 50%;
-      transform: translate(-50%,-50%);
-      width: 33vh;
-      height: 25vh;
-
-      z-index: 5;
-
-      img {
+      
+      .bg-pic {
+        position: absolute;
+        background: url('../images/bg.png') no-repeat center center / contain;
         width: 100%;
         height: 100%;
+        z-index: 10;
+      }
+  
+      .noise {
+        position: relative;
+        height: 100%;
+        width: 100%;
+        z-index: 5;
+    
+        .img {
+          position: absolute;
+          background: url('../images/noise.gif') no-repeat center center / contain;
+          top: 50%;
+          width: 100%;
+          height: 25%;
+        }
       }
     }
+
+    
   }
 
   .v-enter-active, .v-leave-active {
