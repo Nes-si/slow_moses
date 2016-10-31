@@ -6,7 +6,7 @@
     .bg
   
     transition
-      .bg-home(v-show="isLoaded")
+      .bg-home(v-show="isLoaded" @click="onMusicToggle")
         .bg-pic
         .noise
           .img
@@ -71,6 +71,9 @@
       },
       onBgLoaded: function () {
         this.bgLoaded = true;
+      },
+      onMusicToggle: function () {
+        this.$emit('musicToggle');
       }
     }
   }

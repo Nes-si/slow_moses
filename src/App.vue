@@ -2,7 +2,7 @@
   #app.app
     //canvas.canvas#canvas
     .bg
-    router-view.router-view
+    router-view.router-view(v-on:musicToggle="onMusicToggle")
 </template>
 
 <script>
@@ -10,6 +10,12 @@
 
 
   const THROTTLING = 3;
+  
+  const PLAYLIST = [
+    'Slow_Moses_-_Slow_Moses.mp3',
+    'Slow_Moses_-_Ancient_Licks.mp3',
+    'Slow_Moses_-_How_to_Fake_Good_Endings.mp3'
+  ];
 
   export default {
     name: "App",
@@ -20,11 +26,27 @@
         context: null,
         toggle: 0,
 
-        imgData: null
+        imgData: null,
+        
+        music: null,
+        currentSong: 0
       }
     },
 
     mounted: function() {
+      this.music = new Audio('assets/music/' + PLAYLIST[0]);
+      this.music.play();
+      
+      this.music.addEventListener('ended', () => {
+        this.currentSong++;
+        if (this.currentSong >= PLAYLIST.length)
+          this.currentSong = 0;
+        
+        this.music.pause();
+        this.music = new Audio('assets/music/' + PLAYLIST[this.currentSong]);
+        this.music.play();
+      });
+      
       return;
       
       this.canvas = document.getElementById('canvas');
@@ -37,6 +59,13 @@
     },
 
     methods: {
+      onMusicToggle: function () {
+        if (this.music.paused)
+          this.music.play();
+        else
+          this.music.pause();
+      },
+      
       onResize: function () {
         debounce(300, true, () => {
           this.canvas.width = window.innerWidth;
