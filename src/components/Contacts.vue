@@ -143,7 +143,7 @@
       text-shadow: -1px 0 red;
       top: 0;
       color: white;
-      background: url('../images/noise-bg.png') no-repeat center center / auto;
+      background: url('~assets/images/noise-bg.png') no-repeat center center / auto;
       overflow: hidden;
       clip: rect(0, 900px, 0, 0);
       animation: noise-anim-1 2s infinite linear alternate-reverse;
@@ -156,7 +156,7 @@
       text-shadow: 1px 0 blue;
       top: 0;
       color: white;
-      background: url('../images/noise-bg.png') no-repeat center center / auto;
+      background: url('~assets/images/noise-bg.png') no-repeat center center / auto;
       overflow: hidden;
       clip: rect(0, 900px, 0, 0);
       animation: noise-anim-1_2 3s infinite linear alternate-reverse;
@@ -206,7 +206,7 @@
     .label {
       font-size: 16px;
       color: rgba(250,204,130,0.70);
-      letter-spacing: 0px;
+      letter-spacing: 0;
       margin-top: 14px;
     }
 
@@ -221,7 +221,7 @@
       font-family: 'FontAwesome';
       font-size: 16px;
       color: rgba(250,204,130,0.70);
-      letter-spacing: 0px;
+      letter-spacing: 0;
       margin-right: 17px;
     }
 
@@ -247,14 +247,14 @@
       font-family: 'FontAwesome';
       font-size: 24px;
       color: rgba(250,204,130,0.70);
-      letter-spacing: 0px;
+      letter-spacing: 0;
     }
 
     .soundcloud {
       font-family: 'FontAwesome';
       font-size: 30px;
       color: #FACD82;
-      letter-spacing: 0px;
+      letter-spacing: 0;
     }
 
     .ig,
@@ -266,7 +266,7 @@
       will-change: text-shadow;
 
       &:hover {
-        text-shadow: 0px 0px 10px #FACD82;
+        text-shadow: 0 0 10px #FACD82;
       }
     }
 

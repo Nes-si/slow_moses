@@ -1,7 +1,7 @@
 <template lang="pug">
   .home
     .hidden(v-show="false")
-      img(src="~images/bg.png" v-on:load="onBgLoaded")
+      img(src="~assets/images/bg.png" v-on:load="onBgLoaded")
   
     .bg
   
@@ -109,8 +109,8 @@
         font-family: 'FontAwesome';
         font-size: 18px;
         color: #FACD82;
-        letter-spacing: 0px;
-        text-shadow: 0px 0px 10px #FACD82;
+        letter-spacing: 0;
+        text-shadow: 0 0 10px #FACD82;
       }
 
       z-index: 55;
@@ -171,7 +171,7 @@
     .logo {
       margin-top: 6vh;
 
-      background: url('../images/logo.svg') no-repeat center center / contain;
+      background: url('~assets/images/logo.svg') no-repeat center center / contain;
       width: 27.25vw;
       height: 36.555555vh;
       position: relative;
@@ -188,7 +188,7 @@
       
       .bg-pic {
         position: absolute;
-        background: url('../images/bg.png') no-repeat center center / contain;
+        background: url('~assets/images/bg.png') no-repeat center center / contain;
         width: 100%;
         height: 100%;
         z-index: 10;
@@ -202,7 +202,7 @@
     
         .img {
           position: absolute;
-          background: url('../images/noise.gif') no-repeat center center / contain;
+          background: url('~assets/images/noise.gif') no-repeat center center / contain;
           top: 50%;
           width: 100%;
           height: 25%;

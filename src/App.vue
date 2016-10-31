@@ -73,10 +73,10 @@
   @import url('https://fonts.googleapis.com/css?family=Exo+2:300,400,500');
   @font-face {
   	font-family: 'Verveine Regular';
-  	src: url('fonts/VerveineW01-Regular.eot');
-  	src: url('fonts/VerveineW01-Regular.eot?#iefix') format('embedded-opentype'),
-  		url('fonts/VerveineW01-Regular.woff') format('woff'),
-  		url('fonts/VerveineW01-Regular.ttf') format('truetype');
+  	src: url('~assets/fonts/VerveineW01-Regular.eot');
+  	src: url('~assets/fonts/VerveineW01-Regular.eot?#iefix') format('embedded-opentype'),
+  		url('~assets/fonts/VerveineW01-Regular.woff') format('woff'),
+  		url('~assets/fonts/VerveineW01-Regular.ttf') format('truetype');
   	font-weight: normal;
   	font-style: normal;
   }
@@ -101,7 +101,7 @@
     }
     
     .bg {
-      background: url('images/main-200.gif') repeat 0 0;
+      background: url('~assets/images/main-200.gif') repeat 0 0;
     }
   }
 </style>

@@ -229,7 +229,7 @@
       text-shadow: -1px 0 red;
       top: 0;
       color: white;
-      background: url('../images/noise-bg.png') no-repeat center center / auto;
+      background: url('~assets/images/noise-bg.png') no-repeat center center / auto;
       overflow: hidden;
       clip: rect(0, 900px, 0, 0);
       animation: noise-anim 2s infinite linear alternate-reverse;
@@ -242,7 +242,7 @@
       text-shadow: 1px 0 blue;
       top: 0;
       color: white;
-      background: url('../images/noise-bg.png') no-repeat center center / auto;
+      background: url('~assets/images/noise-bg.png') no-repeat center center / auto;
       overflow: hidden;
       clip: rect(0, 900px, 0, 0);
       animation: noise-anim-2 3s infinite linear alternate-reverse;
@@ -295,14 +295,14 @@
       &-name {
         font-size: 16px;
         color: #FACD82;
-        letter-spacing: 0px;
+        letter-spacing: 0;
         flex: 1;
       }
 
       &-location {
         font-size: 16px;
-        color: rgba(250,204,130,0.70);
-        letter-spacing: 0px;
+        color: rgba(250, 204, 130, 0.70);
+        letter-spacing: 0;
         flex: 1;
         text-align: left;
       }
@@ -310,7 +310,7 @@
       &-tickets,
       &-info {
         font-size: 14px;
-        letter-spacing: 0px;
+        letter-spacing: 0;
         flex: 0 0 7%;
         text-align: right;
         text-transform: uppercase;
@@ -323,7 +323,7 @@
         }
 
         &:hover {
-          text-shadow: 0px 0px 10px #FACD82;
+          text-shadow: 0 0 10px #FACD82;
         }
       }
     }
