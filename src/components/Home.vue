@@ -15,6 +15,7 @@
             @click="onMusicToggle"
             @mouseover="onMusicPlay"
             @mouseout="onMusicStop"
+            v-bind:class="{'jpeg-invis': this.musicPlaying}"
             )
     
     .contact
@@ -53,7 +54,9 @@
     data: function () {
       return {
         pageLoaded: false,
-        bgLoaded: false
+        bgLoaded: false,
+        
+        musicPlaying: false
       }
     },
     
@@ -80,12 +83,15 @@
       },
       onMusicPlay: function () {
         this.$emit('musicPlay');
+        this.musicPlaying = true;
       },
       onMusicStop: function () {
         this.$emit('musicStop');
+        this.musicPlaying = false;
       },
       onMusicToggle: function () {
         this.$emit('musicToggle');
+        this.musicPlaying = !this.musicPlaying;
       }
     }
   }
@@ -225,7 +231,7 @@
           cursor: url('~assets/images/cursor-tv.png'), pointer;
         }
         
-        .jpeg:hover {
+        .jpeg-invis {
           opacity: .01;
         }
       }
