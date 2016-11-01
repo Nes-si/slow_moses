@@ -72,17 +72,28 @@
     },
     
     methods: {
+      isIPad: function() {return navigator.userAgent.match(/iPad/i);},
+      isIPhone: function() {return navigator.platform.match(/i(Phone|Pod)/i);},
+      isAndroid: function() {return navigator.userAgent.match(/Android/i);},
+      isGadget: function() {return this.isIPad() || this.isIPhone() || this.isAndroid();},
+      
+      
       onLoaded: function () {
         this.pageLoaded = true;
+        
       },
       onBgLoaded: function () {
         this.bgLoaded = true;
       },
       onMusicPlay: function () {
+        if (this.isGadget())
+          return;
         this.$emit('musicPlay');
         this.musicPlaying = true;
       },
       onMusicStop: function () {
+        if (this.isGadget())
+          return;
         this.$emit('musicStop');
         this.musicPlaying = false;
       },
