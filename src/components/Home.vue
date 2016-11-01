@@ -210,7 +210,7 @@
           left: 50%;
           transform: translateX(-50%);
           height: 25%;
-          cursor: context-menu;
+          cursor: url('~assets/images/cursor-tv.png'), pointer;
         }
       }
     }
