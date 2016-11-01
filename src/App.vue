@@ -2,7 +2,11 @@
   #app.app
     //canvas.canvas#canvas
     .bg
-    router-view.router-view(v-on:musicToggle="onMusicToggle")
+    router-view.router-view(
+      v-on:musicPlay="onMusicPlay"
+      v-on:musicStop="onMusicStop"
+      v-on:musicToggle="onMusicToggle"
+      )
 </template>
 
 <script>
@@ -35,7 +39,7 @@
 
     mounted: function() {
       this.music = new Audio('assets/music/' + PLAYLIST[0]);
-      this.music.play();
+      //this.music.play();
       
       this.music.addEventListener('ended', () => {
         this.currentSong++;
@@ -59,6 +63,12 @@
     },
 
     methods: {
+      onMusicPlay: function () {
+        this.music.play();
+      },
+      onMusicStop: function () {
+        this.music.pause();
+      },
       onMusicToggle: function () {
         if (this.music.paused)
           this.music.play();

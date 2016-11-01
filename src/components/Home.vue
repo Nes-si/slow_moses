@@ -6,10 +6,16 @@
     .bg
   
     transition
-      .bg-home(v-show="isLoaded" @click="onMusicToggle")
+      .bg-home(v-show="isLoaded")
         .bg-pic
         .noise
-          img(src="~assets/images/noise.gif")
+          img.gif(src="~assets/images/noise.gif")
+          img.jpeg(
+            src="~assets/images/noise.jpg"
+            @click="onMusicToggle"
+            @mouseover="onMusicPlay"
+            @mouseout="onMusicStop"
+            )
     
     .contact
       router-link(to="/contacts") 
@@ -71,6 +77,12 @@
       },
       onBgLoaded: function () {
         this.bgLoaded = true;
+      },
+      onMusicPlay: function () {
+        this.$emit('musicPlay');
+      },
+      onMusicStop: function () {
+        this.$emit('musicStop');
       },
       onMusicToggle: function () {
         this.$emit('musicToggle');
@@ -211,6 +223,10 @@
           transform: translateX(-50%);
           height: 25%;
           cursor: url('~assets/images/cursor-tv.png'), pointer;
+        }
+        
+        .jpeg:hover {
+          opacity: .01;
         }
       }
     }
