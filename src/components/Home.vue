@@ -64,7 +64,7 @@
     },
     
     mounted: function () {
-      let img = document.querySelector('.home .hidden img');
+      let img = document.querySelector('.home .bg-pic');
       if (img.complete)
         this.bgLoaded = this.pageLoaded = true;
       else
