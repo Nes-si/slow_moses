@@ -1,13 +1,10 @@
 <template lang="pug">
   .home
-    .hidden(v-show="false")
-      img(src="~assets/images/bg.png" v-on:load="onBgLoaded")
-  
     .bg
   
     transition
       .bg-home(v-show="isLoaded")
-        .bg-pic
+        img.bg-pic(src="~assets/images/bg.png" v-on:load="onBgLoaded")
         .noise
           img.gif(src="~assets/images/noise.gif")
           img.jpeg(
@@ -209,9 +206,9 @@
       
       .bg-pic {
         position: absolute;
-        background: url('~assets/images/bg.png') no-repeat center center / contain;
-        width: 100%;
         height: 100%;
+        left: 50%;
+        transform: translateX(-50%);
         z-index: 10;
         pointer-events: none;
       }
