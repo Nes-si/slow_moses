@@ -9,7 +9,7 @@
       .bg-home(v-show="isLoaded" @click="onMusicToggle")
         .bg-pic
         .noise
-          .img
+          img(src="~assets/images/noise.gif")
     
     .contact
       router-link(to="/contacts") 
@@ -195,6 +195,7 @@
         width: 100%;
         height: 100%;
         z-index: 10;
+        pointer-events: none;
       }
   
       .noise {
@@ -203,12 +204,13 @@
         width: 100%;
         z-index: 5;
     
-        .img {
+        img {
           position: absolute;
-          background: url('~assets/images/noise.gif') no-repeat center center / contain;
           top: 50%;
-          width: 100%;
+          left: 50%;
+          transform: translateX(-50%);
           height: 25%;
+          cursor: context-menu;
         }
       }
     }
