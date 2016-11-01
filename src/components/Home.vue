@@ -50,25 +50,15 @@
     
     data: function () {
       return {
-        pageLoaded: false,
-        bgLoaded: false,
-        
+        isLoaded: false,
         musicPlaying: false
-      }
-    },
-    
-    computed: {
-      isLoaded: function () {
-        return this.pageLoaded && this.bgLoaded;
       }
     },
     
     mounted: function () {
       let img = document.querySelector('.home .bg-pic');
       if (img.complete)
-        this.bgLoaded = this.pageLoaded = true;
-      else
-        document.addEventListener('DOMContentLoaded', this.onLoaded);
+        this.isLoaded = true;
     },
     
     methods: {
@@ -78,12 +68,8 @@
       isGadget: function() {return this.isIPad() || this.isIPhone() || this.isAndroid();},
       
       
-      onLoaded: function () {
-        this.pageLoaded = true;
-        
-      },
       onBgLoaded: function () {
-        this.bgLoaded = true;
+        this.isLoaded = true;
       },
       onMusicPlay: function () {
         if (this.isGadget())

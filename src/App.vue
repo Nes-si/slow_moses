@@ -39,7 +39,6 @@
 
     mounted: function() {
       this.music = new Audio('assets/music/' + PLAYLIST[0]);
-      //this.music.play();
       
       this.music.addEventListener('ended', () => {
         this.currentSong++;
