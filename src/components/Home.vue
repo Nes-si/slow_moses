@@ -12,7 +12,8 @@
           | 
         img.bg-pic(src="~assets/images/bg.png" v-on:load="onBgLoaded")
         .noise
-          img.gif(src="~assets/images/noise.gif")
+          video.gif(autoplay loop)
+            source(src="/assets/videos/noise.mp4" type="video/mp4")
           img.jpeg(
             src="~assets/images/noise.jpg"
             @click="onMusicToggle"
@@ -313,7 +314,8 @@
         width: 100%;
         z-index: 5;
 
-        img {
+        video,
+        .jpeg {
           position: absolute;
           top: 50%;
           left: 50%;
