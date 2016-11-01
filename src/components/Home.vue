@@ -1,14 +1,23 @@
 <template lang="pug">
   .home
-    .cursor
+    transition
+      .cssload(v-show="!isLoaded")
+        .cssload-container
+          .cssload-flex-container
+            li
+              span.cssload-loading
+    
+    .bg
+    
+    .cssload.cursor(v-show="cursorActive")
       .cssload-container
         .cssload-flex-container
           li
             span.cssload-loading
-    .bg
+  
     transition
       .bg-home(v-show="isLoaded")
-        .play
+        .play(@click="onMusicToggle")
           | 
         img.bg-pic(src="~assets/images/bg.png" v-on:load="onBgLoaded")
         .noise
@@ -16,11 +25,12 @@
             source(src="/assets/videos/noise.mp4" type="video/mp4")
           img.jpeg(
             src="~assets/images/noise.jpg"
-            @click="onMusicToggle"
-            @mouseover="onMusicPlay"
-            @mouseout="onMusicStop"
+            @mouseover="onTVOver"
+            @mouseout="onTVOut"
+            @mousemove="onTVMove"
             v-bind:class="{'jpeg-invis': this.musicPlaying}"
             )
+          
 
     .contact
       router-link(to="/contacts") 
@@ -57,7 +67,11 @@
     data: function () {
       return {
         isLoaded: false,
-        musicPlaying: false
+        musicPlaying: false,
+  
+        cursor: null,
+        cursorRect: null,
+        cursorActive: false
       }
     },
 
@@ -65,6 +79,9 @@
       let img = document.querySelector('.home .bg-pic');
       if (img.complete)
         this.isLoaded = true;
+      
+      this.cursor = document.querySelector('.home .cursor');
+      this.cursorRect = this.cursor.getBoundingClientRect();
     },
 
     methods: {
@@ -73,22 +90,38 @@
       isAndroid: function() {return navigator.userAgent.match(/Android/i);},
       isGadget: function() {return this.isIPad() || this.isIPhone() || this.isAndroid();},
 
-
       onBgLoaded: function () {
         this.isLoaded = true;
       },
-      onMusicPlay: function () {
+      
+      onTVOver: function () {
         if (this.isGadget())
           return;
+        
+        this.cursorActive = true;
+        setTimeout(() => this.cursorRect = this.cursor.getBoundingClientRect(), 50);
+        
         this.$emit('musicPlay');
         this.musicPlaying = true;
       },
-      onMusicStop: function () {
+      onTVOut: function () {
         if (this.isGadget())
           return;
+        
+        this.cursorActive = false;
+        
         this.$emit('musicStop');
         this.musicPlaying = false;
       },
+      onTVMove: function (e) {
+        if (this.isGadget())
+          return;
+        
+        let x = e.clientX - this.cursorRect.width/2;
+        let y = e.clientY - this.cursorRect.height/2;
+        this.cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+      },
+      
       onMusicToggle: function () {
         this.$emit('musicToggle');
         this.musicPlaying = !this.musicPlaying;
@@ -97,15 +130,21 @@
   }
 </script>
 <style lang="scss" scoped rel="stylesheet/scss">
-  .cursor {
+  .cssload {
     position: absolute;
     top: 62%;
     left: 50%;
-    transform: translate(-50%,-50%);
-
+    transform: translate(-50%, -50%);
     z-index: 9999;
+    pointer-events: none;
   }
-
+  
+  .cursor {
+    transform: none;
+    top: 0;
+    left: 0;
+  }
+  
   .cssload-container {
     margin: 19px auto 0 auto;
     max-width: 545px;
@@ -321,7 +360,7 @@
           left: 50%;
           transform: translateX(-50%);
           height: 25%;
-          cursor: url('~assets/images/cursor-tv.png'), pointer;
+          cursor: none;
         }
 
         .jpeg-invis {
