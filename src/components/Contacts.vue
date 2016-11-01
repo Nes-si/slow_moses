@@ -83,8 +83,6 @@
 
       position: relative;
       cursor: pointer;
-
-      font-family: 'Verveine Regular', sans-serif;
     }
 
     @keyframes noise-anim-1 {
@@ -161,19 +159,19 @@
       clip: rect(0, 900px, 0, 0);
       animation: noise-anim-1_2 3s infinite linear alternate-reverse;
     }
-    
+
     .contacts-social .title:after {
       animation: noise-anim-2 2s infinite linear alternate-reverse;
     }
-  
+
     .contacts-social .title:before {
       animation: noise-anim-2_2 2s infinite linear alternate-reverse;
     }
-  
+
     .contacts-listen .title:after {
       animation: noise-anim-3 2s infinite linear alternate-reverse;
     }
-  
+
     .contacts-listen .title:before {
       animation: noise-anim-3_2 2s infinite linear alternate-reverse;
     }
@@ -269,6 +267,5 @@
         text-shadow: 0 0 10px #FACD82;
       }
     }
-
   }
 </style>
