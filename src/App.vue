@@ -1,6 +1,5 @@
 <template lang="pug">
   #app.app
-    //canvas.canvas#canvas
     .bg
     router-view.router-view(
       v-on:musicPlay="onMusicPlay"
@@ -10,11 +9,6 @@
 </template>
 
 <script>
-  import debounce from 'throttle-debounce/debounce';
-
-
-  const THROTTLING = 3;
-
   const PLAYLIST = [
     'Slow_Moses_-_Slow_Moses.mp3',
     'Slow_Moses_-_Ancient_Licks.mp3',
@@ -26,12 +20,6 @@
 
     data: function () {
       return {
-        canvas: null,
-        context: null,
-        toggle: 0,
-
-        imgData: null,
-
         music: null,
         currentSong: 0
       }
@@ -49,16 +37,6 @@
         this.music = new Audio('assets/music/' + PLAYLIST[this.currentSong]);
         this.music.play();
       });
-
-      return;
-
-      this.canvas = document.getElementById('canvas');
-      this.context = this.canvas.getContext('2d');
-
-      this.onResize();
-      window.addEventListener('resize', this.onResize);
-
-      this.loop();
     },
 
     methods: {
@@ -73,31 +51,6 @@
           this.music.play();
         else
           this.music.pause();
-      },
-
-      onResize: function () {
-        debounce(300, true, () => {
-          this.canvas.width = window.innerWidth;
-          this.canvas.height = window.innerHeight;
-
-          this.imgData = this.context.createImageData(this.canvas.width, this.canvas.height);
-        })();
-      },
-
-      noise: function () {
-        let buffer32 = new Uint32Array(this.imgData.data.buffer);
-        for (let i = 0; i < buffer32.length;)
-          buffer32[i++] = (255 * Math.random()) << 24;
-        this.context.putImageData(this.imgData, 0, 0);
-      },
-
-      loop: function () {
-        if (!this.toggle)
-          this.noise();
-        this.toggle++;
-        if (this.toggle >= THROTTLING)
-          this.toggle = 0;
-        requestAnimationFrame(this.loop);
       }
     }
   }
@@ -178,17 +131,13 @@
     height: 100%;
     width: 100%;
 
-    .canvas, .bg {
+    .bg {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
       z-index: -1;
-      transform: translate3d(0,0,0);
-    }
-
-    .bg {
       background: url('~assets/images/main-200.gif') repeat 0 0;
     }
   }
