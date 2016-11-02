@@ -6,14 +6,15 @@
           .cssload-flex-container
             li
               span.cssload-loading
-
+  
+    transition
+      .cssload.cursor(v-show="musicPlaying")
+        .cssload-container
+          .cssload-flex-container
+            li
+              span.cssload-loading
+  
     .bg
-
-    .cssload.cursor(v-show="cursorActive")
-      .cssload-container
-        .cssload-flex-container
-          li
-            span.cssload-loading
 
     transition
       .bg-home(v-show="isLoaded")
@@ -23,16 +24,8 @@
           | 
         img.bg-pic(src="~assets/images/bg.png" v-on:load="onBgLoaded")
         .noise(@click="onMusicToggle")
-          video.gif(autoplay loop muted playsinline)
+          video.gif(loop muted playsinline @mouseover="onTVOver" @mouseout="onTVOut")
             source(src="/assets/videos/noise.mp4" type="video/mp4")
-          img.jpeg(
-            src="~assets/images/noise.jpg"
-            @mouseover="onTVOver"
-            @mouseout="onTVOut"
-            @mousemove="onTVMove"
-            v-bind:class="{'jpeg-invis': this.musicPlaying}"
-            )
-
 
     .contact
       router-link(to="/contacts") 
@@ -63,9 +56,6 @@
 
 </template>
 <script>
-  import throttle from 'throttle-debounce/throttle';
-
-
   export default {
     name: "HomeComponent",
 
@@ -76,7 +66,9 @@
 
         cursor: null,
         cursorRect: null,
-        cursorActive: false
+        cursorActive: false,
+        
+        video: null
       }
     },
 
@@ -86,7 +78,7 @@
         this.isLoaded = true;
 
       this.cursor = document.querySelector('.home .cursor');
-      this.cursorRect = this.cursor.getBoundingClientRect();
+      this.video = document.querySelector('.home .noise video');
     },
 
     methods: {
@@ -102,36 +94,28 @@
       onTVOver: function () {
         if (this.isGadget())
           return;
-
-        this.cursorActive = true;
-        setTimeout(() => this.cursorRect = this.cursor.getBoundingClientRect(), 50);
-
+  
+        this.video.play();
         this.$emit('musicPlay');
         this.musicPlaying = true;
       },
       onTVOut: function () {
         if (this.isGadget())
           return;
-
-        this.cursorActive = false;
-
+  
+        this.video.pause();
         this.$emit('musicStop');
         this.musicPlaying = false;
-      },
-      onTVMove: function (e) {
-        throttle(100, () => {
-          if (this.isGadget())
-            return;
-
-          let x = e.clientX - this.cursorRect.width/2;
-          let y = e.clientY - this.cursorRect.height/2;
-          this.cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`;
-        })();
       },
 
       onMusicToggle: function () {
         this.$emit('musicToggle');
         this.musicPlaying = !this.musicPlaying;
+        
+        if (this.musicPlaying)
+          this.video.play();
+        else
+          this.video.pause();
       }
     }
   }
@@ -144,14 +128,6 @@
     transform: translate(-50%, -50%);
     z-index: 9999;
     pointer-events: none;
-  }
-
-  .cursor {
-    transform: none;
-    top: 0;
-    left: 0;
-    transition: transform .1s;
-    will-change: transform;
   }
 
   .cssload-container {
@@ -363,18 +339,13 @@
         width: 100%;
         z-index: 5;
 
-        video,
-        .jpeg {
+        video {
           position: absolute;
           top: 50%;
           left: 50%;
           transform: translateX(-50%);
           height: 25%;
           cursor: none;
-        }
-
-        .jpeg-invis {
-          opacity: .01;
         }
       }
     }
