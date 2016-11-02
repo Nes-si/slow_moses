@@ -391,6 +391,14 @@
           display: block;
         }
 
+        &-name {
+          margin-right: 26px;
+        }
+
+        &-tickets {
+          margin-right: 37px;
+        }
+
         &-name,
         &-location,
         &-info,

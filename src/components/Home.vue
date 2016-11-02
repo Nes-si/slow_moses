@@ -17,10 +17,12 @@
 
     transition
       .bg-home(v-show="isLoaded")
-        .play(@click="onMusicToggle")
+        .play(v-if="!musicPlaying")
           | 
+        .pause(v-if="musicPlaying")
+          | 
         img.bg-pic(src="~assets/images/bg.png" v-on:load="onBgLoaded")
-        .noise
+        .noise(@click="onMusicToggle")
           video.gif(autoplay loop muted playsinline)
             source(src="/assets/videos/noise.mp4" type="video/mp4")
           img.jpeg(
@@ -217,14 +219,15 @@
     }
   }
 
-  .play {
+  .play,
+  .pause {
     font-family: 'FontAwesome';
     font-size: 6vh;
     color: #FFFFFF;
     letter-spacing: 0px;
     text-shadow: 0px 0px 14px #FACD82;
     filter: drop-shadow(0px 0px 5px #FACD82) drop-shadow(0px 0px 7px #FACD82);
-    cursor: pointer;
+    pointer-events: none;
     position: absolute;
     top: 62%;
     left: 50%;
@@ -397,7 +400,8 @@
 
   @media (max-width: 768px) {
     .home {
-      .play {
+      .play,
+      .pause {
         display: block;
       }
 
@@ -420,11 +424,6 @@
     .home {
 
       .logo {
-        // padding: 0 50px;
-        // width: 100%;
-        // max-width: 268px;
-        // height: 203px;
-
         width: 71.46vw;
         height: 32.37vh;
 
