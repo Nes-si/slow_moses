@@ -9,44 +9,58 @@
 </template>
 
 <script>
-  const PLAYLIST = [
-    'Slow_Moses_-_Slow_Moses.mp3',
-    'Slow_Moses_-_Ancient_Licks.mp3',
-    'Slow_Moses_-_How_to_Fake_Good_Endings.mp3'
-  ];
-
+  import 'whatwg-fetch';
+  
+  
   export default {
     name: "App",
 
     data: function () {
       return {
         music: null,
+        playlist: [],
         currentSong: 0
       }
     },
 
-    mounted: function() {
-      this.music = new Audio('assets/music/' + PLAYLIST[0]);
-
-      this.music.addEventListener('ended', () => {
-        this.currentSong++;
-        if (this.currentSong >= PLAYLIST.length)
-          this.currentSong = 0;
-
-        this.music.pause();
-        this.music = new Audio('assets/music/' + PLAYLIST[this.currentSong]);
-        this.music.play();
-      });
+    mounted: function () {
+      fetch('config/music.json')
+        .then(response => response.json())
+        .then(json => {
+          if (json.playlist) {
+            this.playlist = json.playlist;
+            this.musicInit();
+          }
+        }).catch(ex => {
+          console.log('parsing music.json failed!', ex)
+        });
     },
 
     methods: {
+      musicInit: function () {
+        this.music = new Audio('assets/music/' + this.playlist[0]);
+  
+        this.music.addEventListener('ended', () => {
+          this.currentSong++;
+          if (this.currentSong >= this.playlist.length)
+            this.currentSong = 0;
+    
+          this.music.pause();
+          this.music = new Audio('assets/music/' + this.playlist[this.currentSong]);
+          this.music.play();
+        });
+      },
       onMusicPlay: function () {
-        this.music.play();
+        if (this.music)
+          this.music.play();
       },
       onMusicStop: function () {
-        this.music.pause();
+        if (this.music)
+          this.music.pause();
       },
       onMusicToggle: function () {
+        if (!this.music)
+          return;
         if (this.music.paused)
           this.music.play();
         else
