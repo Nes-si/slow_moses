@@ -21,7 +21,7 @@
           | 
         img.bg-pic(src="~assets/images/bg.png" v-on:load="onBgLoaded")
         .noise
-          video.gif(autoplay loop)
+          video.gif(autoplay loop muted playsinline)
             source(src="/assets/videos/noise.mp4" type="video/mp4")
           img.jpeg(
             src="~assets/images/noise.jpg"
