@@ -14,12 +14,13 @@
               | MusicFestNW
             .table-location
               | Portland, Oregon
-          .table-tickets
-            a(href="#")
-              | TICKETS
-          .table-info
-            a(href="#")
-              | Info
+          .table-links
+            .table-tickets
+              a(href="#")
+                | TICKETS
+            .table-info
+              a(href="#")
+                | Info
         .table-item
           .table-date
             | Aug 30
@@ -28,12 +29,13 @@
               | Lagunitas
             .table-location
               | Petaluma, California
-          .table-tickets
-            a(href="#")
-              | TICKETS
-          .table-info
-            a(href="#")
-              | Info
+          .table-links
+            .table-tickets
+              a(href="#")
+                | TICKETS
+            .table-info
+              a(href="#")
+                | Info
         .table-item
           .table-date
             | Sept 1
@@ -42,12 +44,13 @@
               | MusicFestNW
             .table-location
               | Santa Monica, California
-          .table-tickets
-            a(href="#")
-              | TICKETS
-          .table-info
-            a(href="#")
-              | Info
+          .table-links
+            .table-tickets
+              a(href="#")
+                | TICKETS
+            .table-info
+              a(href="#")
+                | Info
         .table-item
           .table-date
             | Aug 28
@@ -56,12 +59,13 @@
               | MusicFestNW
             .table-location
               | Portland, Oregon
-          .table-tickets
-            a(href="#")
-              | TICKETS
-          .table-info
-            a(href="#")
-              | Info
+          .table-links
+            .table-tickets
+              a(href="#")
+                | TICKETS
+            .table-info
+              a(href="#")
+                | Info
         .table-item
           .table-date
             | Aug 30
@@ -70,12 +74,13 @@
               | Lagunitas
             .table-location
               | Petaluma, California
-          .table-tickets
-            a(href="#")
-              | TICKETS
-          .table-info
-            a(href="#")
-              | Info
+          .table-links
+            .table-tickets
+              a(href="#")
+                | TICKETS
+            .table-info
+              a(href="#")
+                | Info
         .table-item
           .table-date
             | Sept 1
@@ -84,12 +89,13 @@
               | MusicFestNW
             .table-location
               | Santa Monica, California
-          .table-tickets
-            a(href="#")
-              | TICKETS
-          .table-info
-            a(href="#")
-              | Info
+          .table-links
+            .table-tickets
+              a(href="#")
+                | TICKETS
+            .table-info
+              a(href="#")
+                | Info
         .table-item
           .table-date
             | Aug 28
@@ -98,12 +104,13 @@
               | MusicFestNW
             .table-location
               | Portland, Oregon
-          .table-tickets
-            a(href="#")
-              | TICKETS
-          .table-info
-            a(href="#")
-              | Info
+          .table-links
+            .table-tickets
+              a(href="#")
+                | TICKETS
+            .table-info
+              a(href="#")
+                | Info
         .table-item
           .table-date
             | Aug 30
@@ -112,12 +119,13 @@
               | Lagunitas
             .table-location
               | Petaluma, California
-          .table-tickets
-            a(href="#")
-              | TICKETS
-          .table-info
-            a(href="#")
-              | Info
+          .table-links
+            .table-tickets
+              a(href="#")
+                | TICKETS
+            .table-info
+              a(href="#")
+                | Info
         .table-item
           .table-date
             | Sept 1
@@ -126,12 +134,13 @@
               | MusicFestNW
             .table-location
               | Santa Monica, California
-          .table-tickets
-            a(href="#")
-              | TICKETS
-          .table-info
-            a(href="#")
-              | Info
+          .table-links
+            .table-tickets
+              a(href="#")
+                | TICKETS
+            .table-info
+              a(href="#")
+                | Info
         .table-item
           .table-date
             | Aug 28
@@ -140,12 +149,13 @@
               | MusicFestNW
             .table-location
               | Portland, Oregon
-          .table-tickets
-            a(href="#")
-              | TICKETS
-          .table-info
-            a(href="#")
-              | Info
+          .table-links
+            .table-tickets
+              a(href="#")
+                | TICKETS
+            .table-info
+              a(href="#")
+                | Info
 </template>
 
 <script>
@@ -307,11 +317,17 @@
         text-align: left;
       }
 
+      &-links {
+        flex: 0 0 14%;
+        display: flex;
+        flex-flow: row nowrap;
+      }
+
       &-tickets,
       &-info {
         font-size: 14px;
         letter-spacing: 0;
-        flex: 0 0 7%;
+        flex: 0 0 50%;
         text-align: right;
         text-transform: uppercase;
 
@@ -348,13 +364,41 @@
           flex: 0 0 57%;
         }
 
-        &-tickets {
-          flex: 0 0 18%;
+        &-links {
+          flex: 0 0 28%;
+        }
+      }
+    }
+  }
+
+  @media (max-width: 375px) {
+    .tour {
+      .table {
+        &-item {
+          flex-flow: column nowrap;
         }
 
-        &-info {
-          flex: 0 0 10%;
+        &-names {
+          margin-top: 12px;
         }
+
+        &-links {
+          margin-top: 19px;
+        }
+
+        &-names,
+        &-links {
+          display: block;
+        }
+
+        &-name,
+        &-location,
+        &-info,
+        &-tickets {
+          text-align: left;
+          display: inline-block;
+        }
+
       }
     }
   }
