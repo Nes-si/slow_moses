@@ -26,7 +26,8 @@
         .noise
           video.gif(loop muted playsinline @mouseover="onTVOver" @mouseout="onTVOut")
             source(src="/assets/videos/noise.mp4" type="video/mp4")
-
+          img.jpeg(src="~assets/images/noise.jpg" v-show="showStub")
+  
     .contact
       router-link(to="/contacts") 
 
@@ -68,7 +69,8 @@
         cursorRect: null,
         cursorActive: false,
 
-        video: null
+        video: null,
+        showStub: true
       }
     },
 
@@ -95,6 +97,7 @@
         if (this.isGadget())
           return;
 
+        this.showStub = false;
         this.video.play();
         this.$emit('musicPlay');
         this.musicPlaying = true;
@@ -109,6 +112,7 @@
       },
 
       onMusicToggle: function () {
+        this.showStub = false;
         this.$emit('musicToggle');
         this.musicPlaying = !this.musicPlaying;
 
@@ -347,13 +351,17 @@
         width: 100%;
         z-index: 5;
 
-        video {
+        video, .jpeg {
           position: absolute;
           top: 50%;
           left: 50%;
           transform: translateX(-50%);
           height: 25%;
           cursor: none;
+        }
+        
+        .jpeg {
+          pointer-events: none;
         }
       }
     }
