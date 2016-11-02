@@ -1,18 +1,14 @@
 <template lang="pug">
   .home
     transition
-      .cssload.preloader(v-show="!isLoaded")
+      .cssload(v-show="!isLoaded")
         .cssload-container
           .cssload-flex-container
             li
               span.cssload-loading
 
     transition
-      .cssload.cursor(v-show="musicPlaying")
-        .cssload-container
-          .cssload-flex-container
-            li
-              span.cssload-loading
+      .cursor(v-show="musicPlaying")
 
     .bg
 
@@ -27,7 +23,7 @@
           video.gif(loop muted playsinline @mouseover="onTVOver" @mouseout="onTVOut")
             source(src="/assets/videos/noise.mp4" type="video/mp4")
           img.jpeg(src="~assets/images/noise.jpg" v-show="showStub")
-  
+
     .contact
       router-link(to="/contacts") 
 
@@ -127,15 +123,11 @@
 <style lang="scss" scoped rel="stylesheet/scss">
   .cssload {
     position: absolute;
-    top: 62%;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     z-index: 9999;
     pointer-events: none;
-  }
-
-  .preloader {
-    top: 50%;
   }
 
   .cssload-container {
@@ -231,6 +223,31 @@
     overflow: hidden;
     height: 100%;
     width: 100%;
+
+    @keyframes backgroundPosition {
+      from {
+        background-position-x: 0px;
+      }
+      to {
+        background-position-x: 35px;
+      }
+    }
+
+    .cursor {
+      background: url('~assets/images/cursor-tv.svg');
+      width: 52px;
+      height: 35px;
+      pointer-events: none;
+      position: absolute;
+      top: 62%;
+      left: 50%;
+      transform: translate3d(-50%,-50%,0);
+
+      z-index: 9999;
+
+      animation: backgroundPosition 0.5s linear infinite;
+      filter: drop-shadow(0px 0px 5px #FACD82) drop-shadow(0px 0px 7px #FACD82) drop-shadow(0px 0px 12px #FACD82);
+    }
 
     .bg {
       // background: #37254C;
@@ -359,7 +376,7 @@
           height: 25%;
           cursor: none;
         }
-        
+
         .jpeg {
           pointer-events: none;
         }
