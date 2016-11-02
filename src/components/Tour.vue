@@ -6,161 +6,28 @@
       | TOUR
     .tour-inner
       .table
-        .table-item
+        .table-item(v-for="(item, index) of tourData" v-bind:key="item")
           .table-date
-            | Aug 28
+            | {{item.date}}
           .table-names
             .table-name
-              | MusicFestNW
+              | {{item.name}}
             .table-location
-              | Portland, Oregon
+              | {{item.location}}
           .table-links
             .table-tickets
-              a(href="#")
+              a(v-bind:href="item.tickets")
                 | TICKETS
             .table-info
-              a(href="#")
-                | Info
-        .table-item
-          .table-date
-            | Aug 30
-          .table-names
-            .table-name
-              | Lagunitas
-            .table-location
-              | Petaluma, California
-          .table-links
-            .table-tickets
-              a(href="#")
-                | TICKETS
-            .table-info
-              a(href="#")
-                | Info
-        .table-item
-          .table-date
-            | Sept 1
-          .table-names
-            .table-name
-              | MusicFestNW
-            .table-location
-              | Santa Monica, California
-          .table-links
-            .table-tickets
-              a(href="#")
-                | TICKETS
-            .table-info
-              a(href="#")
-                | Info
-        .table-item
-          .table-date
-            | Aug 28
-          .table-names
-            .table-name
-              | MusicFestNW
-            .table-location
-              | Portland, Oregon
-          .table-links
-            .table-tickets
-              a(href="#")
-                | TICKETS
-            .table-info
-              a(href="#")
-                | Info
-        .table-item
-          .table-date
-            | Aug 30
-          .table-names
-            .table-name
-              | Lagunitas
-            .table-location
-              | Petaluma, California
-          .table-links
-            .table-tickets
-              a(href="#")
-                | TICKETS
-            .table-info
-              a(href="#")
-                | Info
-        .table-item
-          .table-date
-            | Sept 1
-          .table-names
-            .table-name
-              | MusicFestNW
-            .table-location
-              | Santa Monica, California
-          .table-links
-            .table-tickets
-              a(href="#")
-                | TICKETS
-            .table-info
-              a(href="#")
-                | Info
-        .table-item
-          .table-date
-            | Aug 28
-          .table-names
-            .table-name
-              | MusicFestNW
-            .table-location
-              | Portland, Oregon
-          .table-links
-            .table-tickets
-              a(href="#")
-                | TICKETS
-            .table-info
-              a(href="#")
-                | Info
-        .table-item
-          .table-date
-            | Aug 30
-          .table-names
-            .table-name
-              | Lagunitas
-            .table-location
-              | Petaluma, California
-          .table-links
-            .table-tickets
-              a(href="#")
-                | TICKETS
-            .table-info
-              a(href="#")
-                | Info
-        .table-item
-          .table-date
-            | Sept 1
-          .table-names
-            .table-name
-              | MusicFestNW
-            .table-location
-              | Santa Monica, California
-          .table-links
-            .table-tickets
-              a(href="#")
-                | TICKETS
-            .table-info
-              a(href="#")
-                | Info
-        .table-item
-          .table-date
-            | Aug 28
-          .table-names
-            .table-name
-              | MusicFestNW
-            .table-location
-              | Portland, Oregon
-          .table-links
-            .table-tickets
-              a(href="#")
-                | TICKETS
-            .table-info
-              a(href="#")
+              a(v-bind:href="item.info")
                 | Info
 </template>
 
 <script>
   export default {
-    name: "TourComponent"
+    name: "TourComponent",
+    
+    props: ['tourData']
   }
 </script>
 

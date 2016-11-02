@@ -5,6 +5,7 @@
       v-on:musicPlay="onMusicPlay"
       v-on:musicStop="onMusicStop"
       v-on:musicToggle="onMusicToggle"
+      v-bind:tourData="tourData"
       )
 </template>
 
@@ -19,7 +20,9 @@
       return {
         music: null,
         playlist: [],
-        currentSong: 0
+        currentSong: 0,
+        
+        tourData: []
       }
     },
 
@@ -31,8 +34,19 @@
             this.playlist = json.playlist;
             this.musicInit();
           }
-        }).catch(ex => {
+        })
+        .catch(ex => {
           console.log('parsing music.json failed!', ex)
+        });
+      
+      fetch('config/tour.json')
+        .then(response => response.json())
+        .then(json => {
+          if (json.tour)
+            this.tourData = json.tour;
+        })
+        .catch(ex => {
+          console.log('parsing tour.json failed!', ex)
         });
     },
 
