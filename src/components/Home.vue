@@ -6,15 +6,15 @@
           .cssload-flex-container
             li
               span.cssload-loading
-    
+
     .bg
-    
+
     .cssload.cursor(v-show="cursorActive")
       .cssload-container
         .cssload-flex-container
           li
             span.cssload-loading
-  
+
     transition
       .bg-home(v-show="isLoaded")
         .play(@click="onMusicToggle")
@@ -30,7 +30,7 @@
             @mousemove="onTVMove"
             v-bind:class="{'jpeg-invis': this.musicPlaying}"
             )
-          
+
 
     .contact
       router-link(to="/contacts") 
@@ -61,6 +61,9 @@
 
 </template>
 <script>
+  import throttle from 'throttle-debounce/throttle';
+
+
   export default {
     name: "HomeComponent",
 
@@ -68,7 +71,7 @@
       return {
         isLoaded: false,
         musicPlaying: false,
-  
+
         cursor: null,
         cursorRect: null,
         cursorActive: false
@@ -79,7 +82,7 @@
       let img = document.querySelector('.home .bg-pic');
       if (img.complete)
         this.isLoaded = true;
-      
+
       this.cursor = document.querySelector('.home .cursor');
       this.cursorRect = this.cursor.getBoundingClientRect();
     },
@@ -93,35 +96,37 @@
       onBgLoaded: function () {
         this.isLoaded = true;
       },
-      
+
       onTVOver: function () {
         if (this.isGadget())
           return;
-        
+
         this.cursorActive = true;
         setTimeout(() => this.cursorRect = this.cursor.getBoundingClientRect(), 50);
-        
+
         this.$emit('musicPlay');
         this.musicPlaying = true;
       },
       onTVOut: function () {
         if (this.isGadget())
           return;
-        
+
         this.cursorActive = false;
-        
+
         this.$emit('musicStop');
         this.musicPlaying = false;
       },
       onTVMove: function (e) {
-        if (this.isGadget())
-          return;
-        
-        let x = e.clientX - this.cursorRect.width/2;
-        let y = e.clientY - this.cursorRect.height/2;
-        this.cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        throttle(100, () => {
+          if (this.isGadget())
+            return;
+
+          let x = e.clientX - this.cursorRect.width/2;
+          let y = e.clientY - this.cursorRect.height/2;
+          this.cursor.style.transform = `translate3d(${x}px, ${y}px, 0)`;
+        })();
       },
-      
+
       onMusicToggle: function () {
         this.$emit('musicToggle');
         this.musicPlaying = !this.musicPlaying;
@@ -138,13 +143,15 @@
     z-index: 9999;
     pointer-events: none;
   }
-  
+
   .cursor {
     transform: none;
     top: 0;
     left: 0;
+    transition: transform .1s;
+    will-change: transform;
   }
-  
+
   .cssload-container {
     margin: 19px auto 0 auto;
     max-width: 545px;
