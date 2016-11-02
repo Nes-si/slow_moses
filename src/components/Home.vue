@@ -1,7 +1,7 @@
 <template lang="pug">
   .home
     transition
-      .cssload(v-show="!isLoaded")
+      .cssload.preloader(v-show="!isLoaded")
         .cssload-container
           .cssload-flex-container
             li
@@ -128,6 +128,10 @@
     transform: translate(-50%, -50%);
     z-index: 9999;
     pointer-events: none;
+  }
+
+  .preloader {
+    top: 50%;
   }
 
   .cssload-container {
