@@ -6,14 +6,14 @@
           .cssload-flex-container
             li
               span.cssload-loading
-  
+
     transition
       .cssload.cursor(v-show="musicPlaying")
         .cssload-container
           .cssload-flex-container
             li
               span.cssload-loading
-  
+
     .bg
 
     transition
@@ -67,7 +67,7 @@
         cursor: null,
         cursorRect: null,
         cursorActive: false,
-        
+
         video: null
       }
     },
@@ -94,7 +94,7 @@
       onTVOver: function () {
         if (this.isGadget())
           return;
-  
+
         this.video.play();
         this.$emit('musicPlay');
         this.musicPlaying = true;
@@ -102,7 +102,7 @@
       onTVOut: function () {
         if (this.isGadget())
           return;
-  
+
         this.video.pause();
         this.$emit('musicStop');
         this.musicPlaying = false;
@@ -111,7 +111,7 @@
       onMusicToggle: function () {
         this.$emit('musicToggle');
         this.musicPlaying = !this.musicPlaying;
-        
+
         if (this.musicPlaying)
           this.video.play();
         else
@@ -371,6 +371,10 @@
 
   @media (max-width: 768px) {
     .home {
+      .cursor {
+        display: none;
+      }
+
       .play,
       .pause {
         display: block;

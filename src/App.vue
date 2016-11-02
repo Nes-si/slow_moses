@@ -86,7 +86,7 @@
   }
 
   html {
-    background: #fff;
+    background: #37254C;
     height: 100%;
   }
 
