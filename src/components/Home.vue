@@ -18,12 +18,12 @@
 
     transition
       .bg-home(v-show="isLoaded")
-        .play(v-if="!musicPlaying")
+        .play(@click="onMusicToggle" v-if="!musicPlaying")
           | 
-        .pause(v-if="musicPlaying")
+        .pause(@click="onMusicToggle" v-if="musicPlaying")
           | 
         img.bg-pic(src="~assets/images/bg.png" v-on:load="onBgLoaded")
-        .noise(@click="onMusicToggle")
+        .noise
           video.gif(loop muted playsinline @mouseover="onTVOver" @mouseout="onTVOut")
             source(src="/assets/videos/noise.mp4" type="video/mp4")
 
@@ -207,10 +207,14 @@
     letter-spacing: 0px;
     text-shadow: 0px 0px 14px #FACD82;
     filter: drop-shadow(0px 0px 5px #FACD82) drop-shadow(0px 0px 7px #FACD82);
-    pointer-events: none;
     position: absolute;
     top: 62%;
     left: 50%;
+    height: 25%;
+    width: 15%;
+    flex-flow: column nowrap;
+    justify-content: center;
+    align-items: center;
     transform: translate3d(-50%, -50%, 0);
 
     display: none;
@@ -381,7 +385,7 @@
 
       .play,
       .pause {
-        display: block;
+        display: flex;
       }
 
       .logo {
