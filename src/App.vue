@@ -1,12 +1,15 @@
 <template lang="pug">
   #app.app
     .bg
-    router-view.router-view(
-      v-on:musicPlay="onMusicPlay"
-      v-on:musicStop="onMusicStop"
-      v-on:musicToggle="onMusicToggle"
-      v-bind:tourData="tourData"
-      )
+    transition(name="cover")
+      .bg-cover(v-show="routing")
+    transition(name="main")
+      router-view.router-view(
+        v-on:musicPlay="onMusicPlay"
+        v-on:musicStop="onMusicStop"
+        v-on:musicToggle="onMusicToggle"
+        v-bind:tourData="tourData"
+        )
 </template>
 
 <script>
@@ -22,7 +25,9 @@
         playlist: [],
         currentSong: 0,
         
-        tourData: []
+        tourData: [],
+        
+        routing: false
       }
     },
 
@@ -79,6 +84,13 @@
           this.music.play();
         else
           this.music.pause();
+      }
+    },
+  
+    watch: {
+      '$route' (to, from) {
+        this.routing = true;
+        setTimeout(() => this.routing = false, 500);
       }
     }
   }
@@ -159,14 +171,47 @@
     height: 100%;
     width: 100%;
 
-    .bg {
+    .bg, .bg-cover, .router-view {
       position: absolute;
       top: 0;
       left: 0;
       width: 100%;
       height: 100%;
-      z-index: -1;
+    }
+    
+    .bg {
+      z-index: -2;
       background: url('~assets/images/main-200.gif') repeat 0 0;
     }
+    
+    .bg-cover {
+      z-index: -1;
+      background: #121213;
+      opacity: .5;
+    }
+    
+    .router-view {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+    }
+  
+    .main-enter-active, .main-leave-active {
+      transition: opacity .5s ease-in;
+    }
+    .main-enter, .main-leave-active {
+      opacity: 0.01;
+    }
+  
+    .cover-enter-active, .cover-leave-active {
+      transition: opacity .5s ease;
+    }
+    .cover-enter, .cover-leave-active {
+      opacity: 0.01;
+    }
   }
+
+  
 </style>
