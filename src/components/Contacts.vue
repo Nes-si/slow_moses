@@ -21,17 +21,17 @@
           | CONNECT
 
         .socials
-          a.ig(href="https://www.instagram.com/slowmoses/") 
-          a.fb(href="https://www.facebook.com/SlowMoses/") 
+          a.ig(href="https://www.instagram.com/slowmoses/" target="_blank") 
+          a.fb(href="https://www.facebook.com/SlowMoses/" target="_blank") 
 
       .contacts-item.contacts-listen
         .title(data-text="LISTEN")
           | LISTEN
 
         .listen
-          a.itunes(href="https://itunes.apple.com/us/artist/slow-moses") 
-          a.spotify(href="https://itunes.apple.com/us/artist/slow-moses") 
-          a.soundcloud(href="https://soundcloud.com/wooden-indian") 
+          a.itunes(href="https://itunes.apple.com/us/artist/slow-moses" target="_blank") 
+          a.spotify(href="https://itunes.apple.com/us/artist/slow-moses" target="_blank") 
+          a.soundcloud(href="https://soundcloud.com/wooden-indian" target="_blank") 
 </template>
 <script>
   export default {

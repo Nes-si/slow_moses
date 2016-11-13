@@ -16,17 +16,17 @@
               | {{item.location}}
           .table-links
             .table-tickets
-              a(v-bind:href="item.tickets")
+              a(v-bind:href="item.tickets" target="_blank")
                 | TICKETS
             .table-info
-              a(v-bind:href="item.info")
+              a(v-bind:href="item.info" target="_blank")
                 | Info
 </template>
 
 <script>
   export default {
     name: "TourComponent",
-    
+
     props: ['tourData']
   }
 </script>

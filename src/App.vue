@@ -14,8 +14,8 @@
 
 <script>
   import 'whatwg-fetch';
-  
-  
+
+
   export default {
     name: "App",
 
@@ -24,9 +24,9 @@
         music: null,
         playlist: [],
         currentSong: 0,
-        
+
         tourData: [],
-        
+
         routing: false
       }
     },
@@ -43,7 +43,7 @@
         .catch(ex => {
           console.log('parsing music.json failed!', ex)
         });
-      
+
       fetch('config/tour.json')
         .then(response => response.json())
         .then(json => {
@@ -58,12 +58,12 @@
     methods: {
       musicInit: function () {
         this.music = new Audio('assets/music/' + this.playlist[0]);
-  
+
         this.music.addEventListener('ended', () => {
           this.currentSong++;
           if (this.currentSong >= this.playlist.length)
             this.currentSong = 0;
-    
+
           this.music.pause();
           this.music = new Audio('assets/music/' + this.playlist[this.currentSong]);
           this.music.play();
@@ -86,7 +86,7 @@
           this.music.pause();
       }
     },
-  
+
     watch: {
       '$route' (to, from) {
         this.routing = true;
@@ -178,18 +178,18 @@
       width: 100%;
       height: 100%;
     }
-    
+
     .bg {
       z-index: -2;
       background: url('~assets/images/main-200.gif') repeat 0 0;
     }
-    
+
     .bg-cover {
       z-index: -1;
       background: #121213;
       opacity: .5;
     }
-    
+
     .router-view {
       position: absolute;
       top: 0;
@@ -197,14 +197,14 @@
       width: 100%;
       height: 100%;
     }
-  
+
     .main-enter-active, .main-leave-active {
       transition: opacity .5s ease-in;
     }
     .main-enter, .main-leave-active {
       opacity: 0.01;
     }
-  
+
     .cover-enter-active, .cover-leave-active {
       transition: opacity .5s ease;
     }
@@ -213,5 +213,5 @@
     }
   }
 
-  
+
 </style>
