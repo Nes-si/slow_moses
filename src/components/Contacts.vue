@@ -12,7 +12,7 @@
         .label
           | David Moroney
 
-        .label.label-mail
+        a.label.label-mail(href="mailto:slowmoses@gmail.com")
           .mail 
           | SLOWMOSES@GMAIL.COM
 
