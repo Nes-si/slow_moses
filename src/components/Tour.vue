@@ -2,9 +2,9 @@
   .tour
     .bg
     router-link.cross(to="/") 
-    .title(data-text="TOUR")
+    .title(data-text="TOUR" v-if="tourData[0] !== undefined")
       | TOUR
-    .tour-inner
+    .tour-inner(v-if="tourData[0] !== undefined")
       .table
         .table-item(v-for="(item, index) of tourData" v-bind:key="item")
           .table-date
@@ -21,6 +21,9 @@
             .table-info
               a(v-bind:href="item.info" target="_blank")
                 | Info
+
+    .soon(v-else)
+      | SOON
 </template>
 
 <script>
@@ -46,6 +49,15 @@
     overflow: hidden;
 
     padding: 50px 0 0;
+
+    .soon {
+      font-size: 72px;
+      color: rgba(250,204,130,0.70);
+      letter-spacing: 0px;
+      z-index: 5;
+      margin-top: 50px;
+      height: 50%;
+    }
 
     .bg {
       // background: #37254C;
